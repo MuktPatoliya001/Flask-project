@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Ticket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Book Tickets for {{ ticket.event }}</h1>
+    <p>Price per ticket: ₹{{ ticket.price }}</p> <!-- Display price in INR -->
+    <p>Available tickets: {{ ticket.available }}</p>
+
+    <form method="POST">
+        <label for="num_tickets">Number of tickets:</label>
+        <input type="number" id="num_tickets" name="num_tickets" min="1" max="{{ ticket.available }}" required>
+        <button type="submit">Book Tickets</button>
+    </form>
+
+    <a href="{{ url_for('index') }}">Back to Available Tickets</a>
+</body>
+</html>

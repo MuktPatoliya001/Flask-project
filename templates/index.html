@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Online Ticket Booking</h1>
+    <h2>Available Events</h2>
+    <table>
+        <tr>
+            <th>Event</th>
+            <th>Price</th>
+            <th>Available Tickets</th>
+            <th>Action</th>
+        </tr>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.event }}</td>
+            <td>₹{{ ticket.price }}</td> <!-- Display price in INR -->
+            <td>{{ ticket.available }}</td>
+            <td><a href="{{ url_for('book_ticket', ticket_id=ticket.id) }}">Book Now</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
